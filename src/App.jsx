@@ -7,7 +7,7 @@ import PaymentPage from "./pages/PaymentPage";
 import InvoicePage from "./pages/InvoicePage";
 
 export default function App() {
-  const [page, setPage] = useState("dashboard"); // <-- awalnya dashboard, bukan home
+  const [page, setPage] = useState("dashboard");
   const [selected, setSelected] = useState(null);
   const [dataSize, setDataSize] = useState("3GB");
   const [days, setDays] = useState("07");
