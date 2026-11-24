@@ -71,7 +71,7 @@ export default function HomePage({ onSelect, onBack }) {
                             <img
                                 src={p.image}
                                 alt={p.name}
-                                className="w-full aspect-[3/4] object-cover rounded-[16px]"
+                                className="w-full aspect-[4/5] object-cover rounded-[16px]"
                             />
                             <h3 className="font-bold text-[15px] mt-3 leading-tight px-1">{p.name}</h3>
                             <p className="text-[12px] text-gray-400 mt-0.5 px-1">{p.regionLabel}</p>
