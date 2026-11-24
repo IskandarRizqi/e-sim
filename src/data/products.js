@@ -1,0 +1,80 @@
+export const products = [
+  {
+    id: 1,
+    name: "eSIM Singapore",
+    region: "Asia",
+    regionLabel: "Region Asia",
+    type: "Topupable",
+    price: 52000,
+    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
+    coverage: "Singapore",
+    desc: [
+      "SIM/eSIM dengan koneksi cepat hingga 4G.",
+      "SIM tersedia dalam tiga ukuran; eSIM dilengkapi dengan kode QR dan petunjuk pemasangan.",
+      "Terhubung ke operator terbaik untuk cakupan dan kecepatan optimal.",
+      "Masa berlaku data dimulai saat pertama kali digunakan di negara tujuan.",
+      "Paket mulai dari 500MB/hari hingga 30GB/bulan, dengan durasi dari 1 hari hingga 1 bulan.",
+    ],
+  },
+  {
+    id: 2,
+    name: "eSIM Indonesia",
+    region: "Asia",
+    regionLabel: "Region Asia",
+    type: "Topupable",
+    price: 52000,
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80",
+    coverage: "Indonesia",
+    desc: ["SIM/eSIM dengan koneksi cepat hingga 4G.", "Terhubung ke operator terbaik untuk cakupan dan kecepatan optimal."],
+  },
+  {
+    id: 3,
+    name: "eSIM USA",
+    region: "Amerika",
+    regionLabel: "Region America",
+    type: "Instant",
+    price: 69000,
+    image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=600&q=80",
+    coverage: "USA",
+    desc: ["SIM/eSIM dengan koneksi cepat hingga 4G.", "Terhubung ke operator terbaik untuk cakupan dan kecepatan optimal."],
+  },
+  {
+    id: 4,
+    name: "eSIM South Korea",
+    region: "Asia",
+    regionLabel: "Region Asia",
+    type: "Instant",
+    price: 69000,
+    image: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?w=600&q=80",
+    coverage: "South Korea",
+    desc: ["SIM/eSIM dengan koneksi cepat hingga 4G.", "Terhubung ke operator terbaik untuk cakupan dan kecepatan optimal."],
+  },
+  {
+    id: 5,
+    name: "eSIM Eropa",
+    region: "Eropa",
+    regionLabel: "Region Eropa",
+    type: "Instant",
+    price: 89000,
+    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80",
+    coverage: "Eropa",
+    desc: ["SIM/eSIM dengan koneksi cepat hingga 4G.", "Terhubung ke operator terbaik untuk cakupan dan kecepatan optimal."],
+  },
+  {
+    id: 6,
+    name: "eSIM Australia",
+    region: "Oseania",
+    regionLabel: "Region Oseania",
+    type: "Topupable",
+    price: 75000,
+    image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&q=80",
+    coverage: "Australia",
+    desc: ["SIM/eSIM dengan koneksi cepat hingga 4G.", "Terhubung ke operator terbaik untuk cakupan dan kecepatan optimal."],
+  },
+];
+
+export const dataOptions = ["3GB", "5GB", "10GB", "15GB"];
+export const dayOptions = ["07", "14", "24", "30"];
+
+export const formatRupiah = (n) => "Rp" + n.toLocaleString("id-ID");
+export const formatRupiahDecimal = (n) => "Rp" + n.toLocaleString("id-ID") + ",00";
