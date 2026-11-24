@@ -13,11 +13,11 @@ export default function InvoicePage({ product, dataSize, customer, payment, pric
         <div className="bg-[#2933A5] min-h-screen">
             <div className="px-5 pt-5 pb-4 flex justify-between items-center text-white">
                 <div className="flex items-center gap-3">
-                    <button className="w-8 h-8 flex items-center justify-center -ml-1 shrink-0">
+                    {/* <button className="w-8 h-8 flex items-center justify-center -ml-1 shrink-0">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                             <path d="M12.5 3.5L6 10L12.5 16.5" stroke="white" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                    </button>
+                    </button> */}
                     <h1 className="font-bold text-[20px]">Invoice</h1>
                 </div>
                 <div className="flex items-center gap-1">

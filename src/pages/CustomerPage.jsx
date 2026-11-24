@@ -2,9 +2,20 @@ const today = new Date();
 const tanggalPesanan = `${String(today.getDate()).padStart(2, "0")}-${String(today.getMonth() + 1).padStart(2, "0")}-${today.getFullYear()}`;
 
 export default function CustomerPage({ product, dataSize, customer, setCustomer, onBack, onNext }) {
+    const isNamaValid = customer.nama?.trim().length > 0;
+    const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email || "");
+    const isWaValid = (customer.wa || "").replace(/\D/g, "").length >= 9;
+
+    const isFormValid = isNamaValid && isEmailValid && isWaValid;
+
+    const handleNext = () => {
+        if (!isFormValid) return;
+        onNext();
+    };
+
     return (
-        <div className="bg-[#2933A5] min-h-screen">
-            <div className="px-5 pt-5 pb-4 flex justify-between items-center text-white">
+        <div className="bg-white min-h-screen flex flex-col">
+            <div className="bg-[#2933A5] px-5 pt-5 pb-6 flex justify-between items-center text-white rounded-b-[0px]">
                 <div className="flex items-center gap-3">
                     <button onClick={onBack} className="w-8 h-8 flex items-center justify-center -ml-1 shrink-0">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -20,7 +31,7 @@ export default function CustomerPage({ product, dataSize, customer, setCustomer,
                 </div>
             </div>
 
-            <div className="bg-white rounded-t-[28px] px-5 pt-5 pb-8 min-h-[600px]">
+            <div className="bg-white rounded-t-[28px] -mt-4 px-5 pt-5 pb-8 flex-1">
                 <h3 className="font-bold text-lg">Ringkasan Paket</h3>
                 <div className="space-y-2 mt-3 text-[15px]">
                     <div className="flex justify-between"><span className="text-gray-500">Paket Terpilih</span><span>{product?.name}</span></div>
@@ -33,20 +44,32 @@ export default function CustomerPage({ product, dataSize, customer, setCustomer,
                 <div className="mt-3 space-y-4">
                     <div>
                         <label className="block mb-1">Nama</label>
-                        <input value={customer.nama} onChange={e => setCustomer({ ...customer, nama: e.target.value })} placeholder="Masukan Nama Pelanggan" className="w-full border rounded-xl px-4 py-3 outline-none focus:border-[#2933A5]" />
+                        <input value={customer.nama} onChange={e => setCustomer({ ...customer, nama: e.target.value })} placeholder="Masukan Nama Pelanggan" className={`w-full border rounded-xl px-4 py-3 outline-none focus:border-[#2933A5] ${!isNamaValid && customer.nama ? "border-red-500" : ""}`} />
+                        {!isNamaValid && <p className="text-xs text-red-500 mt-1">Nama wajib diisi</p>}
                     </div>
                     <div>
                         <label className="block mb-1">Alamat Email</label>
                         <input value={customer.email} onChange={e => setCustomer({ ...customer, email: e.target.value })} placeholder="Masukan Email Pelanggan" className="w-full border rounded-xl px-4 py-3 outline-none focus:border-[#2933A5]" />
+                        {customer.email && !isEmailValid && <p className="text-xs text-red-500 mt-1">Format email tidak valid</p>}
+                        {!customer.email && <p className="text-xs text-red-500 mt-1">Email wajib diisi</p>}
                     </div>
                     <div>
                         <label className="block mb-1">Nomor Whatsapp</label>
                         <input value={customer.wa} onChange={e => setCustomer({ ...customer, wa: e.target.value })} placeholder="Masukan Nomor HP Pelanggan" className="w-full border rounded-xl px-4 py-3 outline-none focus:border-[#2933A5]" />
                         <p className="text-xs mt-1">Jika terjadi kendala, kami akan menghubungi ke nomor ini</p>
+                        {customer.wa && !isWaValid && <p className="text-xs text-red-500 mt-1">Nomor Whatsapp tidak valid</p>}
+                        {!customer.wa && <p className="text-xs text-red-500 mt-1">Nomor Whatsapp wajib diisi</p>}
                     </div>
                 </div>
 
-                <button onClick={onNext} className="w-full bg-[#2933A5] text-white py-3.5 rounded-full font-bold mt-10">Lanjutkan</button>
+                <button 
+                    onClick={handleNext} 
+                    disabled={!isFormValid}
+                    className={`w-full py-3.5 rounded-full font-bold mt-10 transition ${isFormValid ? "bg-[#2933A5] text-white" : "bg-gray-300 text-gray-500 cursor-not-allowed"}`}
+                >
+                    Lanjutkan
+                </button>
+                {!isFormValid && <p className="text-center text-xs text-gray-500 mt-2">Lengkapi semua data di atas untuk melanjutkan</p>}
             </div>
         </div>
     );
